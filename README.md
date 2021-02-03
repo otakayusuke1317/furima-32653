@@ -14,7 +14,7 @@
 ### Association
 
 - has_many  :products
-- has_many  :purchase_record
+- has_many  :purchase_records
 
 ## products
 
@@ -32,7 +32,7 @@
 
 ### Association
 
-- has_one :purchase_record destination :destroy
+- has_one :purchase_record, dependent: :destroy
 - belongs_to :user
 
 ## destinations
@@ -49,7 +49,7 @@
 
 ### Association
 
-- has_one :purchase_record
+- belongs_to :purchase_record
 
 ## purchase_record
 
