@@ -13,32 +13,27 @@
 
 ### Association
 
-- has_one　 :destination
-- has_many  :product
-- has_many  :purchase record
+- has_many  :products
+- has_one   :purchase_record
 
 ## products
 
-|      Column      |   Type   |  Options    |
-|------------------|----------|-------------|
-| name             | string   | null: false |
-| price            | integer  | null: false |
-| description      | text     | null: false |
-| status           | string   | null: false |
-| size             | string   | null: false |
-| shipping_cost    | string   | null: false |
-| shipping_days    | string   | null: false |
-| prefecture_id    | string   | null: false |
-| judgment         | string   |
-| category_id      | integer  | null: false, foreign_key: true|
-| brand_id         | integer  | null: false, foreign_key: true|
-| shipping_id      | integer  | null: false, foreign_key: true|
-| user_id          | integer  | null: false, foreign_key: true|
+|        Column        |   Type   |  Options    |
+|----------------------|----------|-------------|
+| name                 | string   | null: false |
+| price                | integer  | null: false |
+| description          | text     | null: false |
+| status_id            | integer  | null: false |
+| shipping_cost_id     | integer  | null: false |
+| shipping_day_id      | integer  | null: false |
+| prefecture_id        | integer  | null: false |
+| category_id          | integer  | null: false |
+| user_id              | integer  | null: false, foreign_key: true|
 
 ### Association
 
-- has_many :purchase record
-- belongs_to :purchase record destination :destroy
+- belongs_to :purchase_record destination :destroy
+- belongs_to :user
 
 ## destinations
 
@@ -54,7 +49,7 @@
 
 ### Association
 
-- has_one :purchase record
+- has_one :purchase_record
 
 ## purchase_record
 
@@ -67,4 +62,4 @@
 
 - belongs_to :product
 - belongs_to :user
-- has_one :destinations
+- has_one :destination
