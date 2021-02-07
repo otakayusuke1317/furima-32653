@@ -114,13 +114,17 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
+      
+      it '全角だけのパスワードだと登録できないこと'do
+        @user.password = 'アイウエオカ'
+        @user.password_confirmation = 'アイウエオカ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+      end
     end
 
     context '新規登録できるとき' do
-      it ' passwordが6文字以上であれば登録できること ' do
-        expect(@user).to be_valid
-      end
-
+      
       it 'nicknameとemail、passwordとpassword_confirmation、first_name、family_name、first_name_kana、family_name_kana、birth_dayが存在すれば登録できること' do
         expect(@user).to be_valid
       end
