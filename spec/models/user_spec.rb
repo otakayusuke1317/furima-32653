@@ -125,7 +125,7 @@ describe User do
 
     context '新規登録できるとき' do
       
-      it 'nicknameとemail、passwordとpassword_confirmation、first_name、family_name、first_name_kana、family_name_kana、birth_dayが存在すれば登録できること' do
+      it '全ての項目が正しく入力されていたら登録できる'do
         expect(@user).to be_valid
       end
     end
