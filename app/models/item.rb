@@ -1,6 +1,12 @@
 class Item < ApplicationRecord
- 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  
   has_one_attached :image
+  belongs_to :status
+  belongs_to :category
+  belongs_to :shipping_cost
+  belongs_to :shipping_day
+  belongs_to :prefecture
 
   with_options presence: true do
     validates :name
