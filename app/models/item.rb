@@ -1,12 +1,14 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
+   
+   
    has_one_attached :image
    belongs_to :status
    belongs_to :category
    belongs_to :shipping_cost
    belongs_to :shipping_day
    belongs_to :prefecture
+   belongs_to :user
 
   with_options presence: true do
     validates :name
@@ -14,7 +16,6 @@ class Item < ApplicationRecord
     validates :price, numericality: { only_integer: true, message: "Half-width number." }
     validates :description
     validates :status_id, :shipping_cost_id, :shipping_day_id, :prefecture_id, :category_id 
-    validates :user_id
     validates :image
   
     #空の投稿を保存できないようにする
