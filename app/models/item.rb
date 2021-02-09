@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     validates :price, numericality: { only_integer: true, message: "Half-width number." }
     validates :description
     validates :status_id, :shipping_cost_id, :shipping_day_id, :prefecture_id, :category_id 
-    validates :use_id
+    validates :user_id
     validates :image
   
     #空の投稿を保存できないようにする
