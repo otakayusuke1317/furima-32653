@@ -18,8 +18,6 @@ class Item < ApplicationRecord
     validates :status_id, :shipping_cost_id, :shipping_day_id, :prefecture_id, :category_id 
     validates :image
   
-    #空の投稿を保存できないようにする
-    validates :name, :description, presence: true
     #選択が「--」の時は保存できないようにする
     validates :status_id, :shipping_cost_id, :shipping_day_id, :prefecture_id, :category_id, numericality: { other_than: 1 } 
   end
