@@ -8,7 +8,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname, length: { maximum: 20 }
     validates :family_name,      :first_name,
-              format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: 'is invalid. Input full-width characters.' }
+              format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: 'is invalid. Input full-width characters.' }
     validates :family_name_kana, :first_name_kana,
               format: { with: /\A[ァ-ヶー－]+\z/, message: 'is invalid. Input full-width katakana characters.' }
     validates :birth_day
