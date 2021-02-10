@@ -114,8 +114,8 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
-      
-      it '全角だけのパスワードだと登録できないこと'do
+
+      it '全角だけのパスワードだと登録できないこと' do
         @user.password = 'アイウエオカ'
         @user.password_confirmation = 'アイウエオカ'
         @user.valid?
@@ -124,8 +124,7 @@ describe User do
     end
 
     context '新規登録できるとき' do
-      
-      it '全ての項目が正しく入力されていたら登録できる'do
+      it '全ての項目が正しく入力されていたら登録できる' do
         expect(@user).to be_valid
       end
     end
