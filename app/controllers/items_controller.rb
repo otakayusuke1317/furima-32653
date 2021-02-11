@@ -7,6 +7,9 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
+ 
+  def show
+  end
 
   def create
     @item = Item.new(item_params)
