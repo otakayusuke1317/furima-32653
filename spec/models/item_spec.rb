@@ -36,7 +36,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      
+
       it 'status_idが空だと出品できない' do
         @item.status_id = nil
         @item.valid?
@@ -54,13 +54,13 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
-      
+
       it 'prefecture_idが空だと出品できない' do
         @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
-      
+
       it 'category_idが未選択だと出品できない' do
         @item.category_id = 1
         @item.valid?
