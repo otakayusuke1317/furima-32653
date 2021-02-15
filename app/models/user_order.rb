@@ -3,11 +3,12 @@ class UserOrder
   attr_accessor :product_id, :user_id, :post_code, :prefecture_id, :city, :address, :phone_number
 
  with_options presence: true do
-  validates :post_code, format: { with: /A\d{3}[-]\d{4}z/, message: 'Input correctly' }
+
+  validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly' }
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :city
   validates :address
-  validates :phone_number,format: { with: /A\d{11}z/, message: 'Input only number' }
+  validates :phone_number,format: { with: /\A\d{11}\z/, message: 'Input only number' }
  end
 
   def save
