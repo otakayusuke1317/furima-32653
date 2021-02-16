@@ -1,11 +1,13 @@
 class PurchaseRecordsController < ApplicationController
  def index
   @user_purchase_record = UserOrder.new
+  @item = Item.find(params[:item_id])
  end
  
  def create
   @user_purchase_record = UserOrder.new(user_purchase_record_params)
-   if @user_purchase_record.valid?
+  @item = Item.find(params[:item_id])
+  if @user_purchase_record.valid?
 
      @user_purchase_record.save
      return redirect_to root_path
