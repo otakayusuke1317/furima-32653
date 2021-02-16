@@ -1,6 +1,6 @@
 class UserOrder
   include ActiveModel::Model
-  attr_accessor :product_id, :user_id, :post_code, :prefecture_id, :city, :address, :phone_number
+  attr_accessor :token, :product_id, :user_id, :post_code, :prefecture_id, :city, :address, :phone_number
 
  with_options presence: true do
 
@@ -9,7 +9,8 @@ class UserOrder
   validates :city
   validates :address
   validates :phone_number,format: { with: /\A\d{11}\z/, message: 'Input only number' }
- end
+  validates :token
+end
 
   def save
     # 購入履歴の情報を保存
