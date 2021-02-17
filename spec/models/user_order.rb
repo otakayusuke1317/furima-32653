@@ -18,7 +18,8 @@ RSpec.describe UserOrder, type: :model do
         @user_order.building_name = nil
         expect(@user_order).to be_valid
       end
-
+    end
+    context '商品購入情報の内容が正しくない時' do
       it 'user_idが空だと登録できない' do
         @user_order.user_id = nil
         @user_order.valid?
