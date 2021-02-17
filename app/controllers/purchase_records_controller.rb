@@ -1,13 +1,19 @@
 class PurchaseRecordsController < ApplicationController
- def index
-  @user_purchase_record = UserOrder.new
+  before_action :authenticate_user!, only: [:index, :create]
+ 
+  def index
   @item = Item.find(params[:item_id])
+  if @item.user_id == current_user.id || @item.purchase_record.present?
+     # ログインユーザーが出品者の時、「または(||)」購入履歴があった時
+  redirect_to root_path
+  end
+  @user_purchase_record = UserOrder.new
  end
  
  def create
   @user_purchase_record = UserOrder.new(user_purchase_record_params)
   @item = Item.find(params[:item_id])
-  if @user_purchase_record.valid?
+  if @user_purchase_record.valid? 
     pay_item 
     @user_purchase_record.save
      return redirect_to root_path
