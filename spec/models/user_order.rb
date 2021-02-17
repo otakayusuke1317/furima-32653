@@ -38,7 +38,7 @@ RSpec.describe UserOrder, type: :model do
         expect(@user_order.errors.full_messages).to include("Post code can't be blank")
       end
 
-      it 'post_codeは数字のみだと購入できない' do
+      it 'post_codeはハイフンが含まれていなければ購入できない' do
         @user_order.post_code = '1234567'
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Post code Input correctly")

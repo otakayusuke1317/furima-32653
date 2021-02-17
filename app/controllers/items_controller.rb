@@ -20,7 +20,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    if @item.user_id == current_user.id
+       @item.update(item_params)
       redirect_to action: :show
     else
       render :edit
@@ -30,8 +31,6 @@ class ItemsController < ApplicationController
   def edit
     if @item.user_id != current_user.id || @item.purchase_record.present?
       redirect_to root_path
-    else
-      render :new
     end
   end
 
