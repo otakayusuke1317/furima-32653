@@ -55,11 +55,11 @@
 
 |      Column      |  Type  |  Options    |
 |------------------|--------|-------------|
-| product_id       | integer| null: false, foreign_key: true|
-| user_id          | integer| null: false, foreign_key: true|
+| item             | integer| null: false, foreign_key: true|
+| user             | integer| null: false, foreign_key: true|
 
 ### Association
 
-- belongs_to :product
+- belongs_to :item
 - belongs_to :user
 - has_one :destination
