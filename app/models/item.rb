@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
+
   has_one :purchase_record, dependent: :destroy
   has_one_attached :image
   belongs_to :status
