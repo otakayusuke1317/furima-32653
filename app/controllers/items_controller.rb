@@ -20,9 +20,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.user_id == current_user.id
-       @item.update(item_params)
-      redirect_to action: :show
+    @item.update(item_params) if @item.user_id == current_user.id
+    if @item.valid?
+       redirect_to action: :edit
     else
       render :edit
     end
