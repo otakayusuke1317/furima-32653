@@ -13,10 +13,10 @@
 
 ### Association
 
-- has_many  :products
+- has_many  :items
 - has_many  :purchase_records
 
-## products
+## items
 
 |        Column        |   Type   |  Options    |
 |----------------------|----------|-------------|
@@ -51,12 +51,12 @@
 
 - belongs_to :purchase_record
 
-## purchase_record
+## purchase_records
 
-|      Column      |  Type  |  Options    |
-|------------------|--------|-------------|
-| item             | integer| null: false, foreign_key: true|
-| user             | integer| null: false, foreign_key: true|
+|      Column       |  Type  |  Options    |
+|-------------------|--------|-------------|
+| item_id           | integer| null: false, foreign_key: true|
+| user_id           | integer| null: false, foreign_key: true|
 
 ### Association
 

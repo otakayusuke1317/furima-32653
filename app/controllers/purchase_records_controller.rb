@@ -22,7 +22,7 @@ class PurchaseRecordsController < ApplicationController
 
   def user_purchase_record_params
     params.require(:user_order).permit(:post_code, :prefecture_id, :city, :address, :phone_number, :building_name).merge(token: params[:token],
-                                                                                                         user_id: current_user.id, product_id: params[:item_id])
+                                                                                                         user_id: current_user.id, item_id: params[:item_id])
   end
 
   def set_item
