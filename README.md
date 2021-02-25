@@ -1,3 +1,5 @@
+## 追加機能 商品の取り置き機能
+
 ## users
 
 |         Column        |  Type  |  Options    |
