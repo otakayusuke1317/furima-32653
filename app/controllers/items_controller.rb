@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_item, only: [:show, :update, :edit, :destroy]
-  before_action :search_item, only: [:index, :search]
+  before_action :search_item, only: [:index, :search, :show]
 
   
   def index
@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def search
+    @i= Item.ransack(params[:q])
     @results = @i.result
   end
 
@@ -62,6 +63,7 @@ class ItemsController < ApplicationController
   end
 
   def search_item
-    @i = Item.ransack(params[:q]) 
+    @i = Item.ransack(params[:q])
+    
   end
 end
