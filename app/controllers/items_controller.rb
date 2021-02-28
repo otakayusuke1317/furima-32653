@@ -1,8 +1,16 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_item, only: [:show, :update, :edit, :destroy]
+  before_action :search_item, only: [:index, :search, :show]
+
+  
   def index
     @item = Item.all.order('created_at DESC')
+  end
+
+  def search
+    @i= Item.ransack(params[:q])
+    @results = @i.result
   end
 
   def new
@@ -52,5 +60,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def search_item
+    @i = Item.ransack(params[:q])
+    
   end
 end
