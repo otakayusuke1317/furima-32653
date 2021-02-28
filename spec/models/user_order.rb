@@ -27,11 +27,10 @@ RSpec.describe UserOrder, type: :model do
       end
 
       it 'product_idが空だと登録できない' do
-        @user_order.product_id= nil
+        @user_order.product_id = nil
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Product can't be blank")
       end
-
 
       it 'post_codeが空だと購入できない' do
         @user_order.post_code = nil
@@ -42,7 +41,7 @@ RSpec.describe UserOrder, type: :model do
       it 'post_codeはハイフンが含まれていなければ購入できない' do
         @user_order.post_code = '1234567'
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Post code Input correctly")
+        expect(@user_order.errors.full_messages).to include('Post code Input correctly')
       end
 
       it 'prefecture_idが空たど購入したできない' do
@@ -54,9 +53,9 @@ RSpec.describe UserOrder, type: :model do
       it 'prefecture_idが1だと購入したできない' do
         @user_order.prefecture_id = 1
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@user_order.errors.full_messages).to include('Prefecture must be other than 1')
       end
-      
+
       it 'cityが空だと購入できない' do
         @user_order.city = nil
         @user_order.valid?
@@ -76,9 +75,9 @@ RSpec.describe UserOrder, type: :model do
       end
 
       it 'phone_numberが英数混合では購入できない' do
-        @user_order.phone_number ='1a2b3c4d5e6'
+        @user_order.phone_number = '1a2b3c4d5e6'
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Phone number Input only number")
+        expect(@user_order.errors.full_messages).to include('Phone number Input only number')
       end
 
       it 'phone_numderが11桁以内でなければ購入できない' do

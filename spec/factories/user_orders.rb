@@ -4,8 +4,8 @@ FactoryBot.define do
     prefecture_id   { 3 }
     city            { '東京都港区' }
     address         { '台場1-1' }
-    phone_number    { "12300000000" }
-    building_name   { "森ビル" }
+    phone_number    { '12300000000' }
+    building_name   { '森ビル' }
     token { 'tok_abcdefghijk00000000000000000' }
   end
 end

@@ -3,13 +3,12 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :update, :edit, :destroy]
   before_action :search_item, only: [:index, :search, :show]
 
-  
   def index
     @item = Item.all.order('created_at DESC')
   end
 
   def search
-    @i= Item.ransack(params[:q])
+    @i = Item.ransack(params[:q])
     @results = @i.result
   end
 
@@ -30,16 +29,14 @@ class ItemsController < ApplicationController
   def update
     @item.update(item_params) if @item.user_id == current_user.id
     if @item.valid?
-       redirect_to action: :edit
+      redirect_to action: :edit
     else
       render :edit
     end
   end
 
   def edit
-    if @item.user_id != current_user.id || @item.purchase_record.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.user_id != current_user.id || @item.purchase_record.present?
   end
 
   def create
@@ -64,6 +61,5 @@ class ItemsController < ApplicationController
 
   def search_item
     @i = Item.ransack(params[:q])
-    
   end
 end
